@@ -1,0 +1,52 @@
+﻿@model ContactViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+
+                    <h3 class="text-center fw-bold mb-4">📩 Contact Me</h3>
+
+                    <form asp-action="Contact" method="post">
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Name</label>
+                            <input asp-for="Name" class="form-control form-control-lg"
+                                   placeholder="Enter your name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email</label>
+                            <input asp-for="Email" class="form-control form-control-lg"
+                                   placeholder="Enter your email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Message</label>
+                            <textarea asp-for="Message" rows="4"
+                                      class="form-control form-control-lg"
+                                      placeholder="Write your message..."></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary btn-lg w-100 rounded-pill">
+                            Send Message 🚀
+                        </button>
+                    </form>
+
+                    @if (ViewBag.Success != null)
+                    {
+                        <div class="alert alert-success text-center mt-4">
+                            @ViewBag.Success
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
