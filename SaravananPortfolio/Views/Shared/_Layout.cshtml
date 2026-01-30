@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -34,4 +34,46 @@
     </main>
 
 </body>
+</html> *@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Saravanan R | Portfolio</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold"
+               asp-controller="Home"
+               asp-action="Index">
+                Saravanan R
+            </a>
+
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
+                <a class="nav-link" asp-controller="Home" asp-action="Skills">Skills</a>
+                <a class="nav-link" asp-controller="Home" asp-action="Projects">Projects</a>
+                <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main style="padding-top:70px;">
+        @RenderBody()
+    </main>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
+

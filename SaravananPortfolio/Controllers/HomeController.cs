@@ -1,9 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SaravananPortfolio.Models;
 using System.Net;
-using Microsoft.Extensions.Configuration;
 using System.Net.Mail;
-
 
 namespace SaravananPortfolio.Controllers
 {
@@ -16,30 +14,11 @@ namespace SaravananPortfolio.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Skills()
-        {
-            return View();
-        }
-
-        public IActionResult Projects()
-        {
-            return View();
-        }
-        public IActionResult PortfolioProject()
-        {
-            return View();
-        }
-
+        public IActionResult Index() => View();
+        public IActionResult About() => View();
+        public IActionResult Skills() => View();
+        public IActionResult Projects() => View();
+        public IActionResult PortfolioProject() => View();
 
         [HttpGet]
         public IActionResult Contact()
@@ -55,7 +34,6 @@ namespace SaravananPortfolio.Controllers
                 SendEmail(model);
                 ViewBag.Success = "Message sent successfully!";
             }
-
             return View();
         }
 
@@ -77,41 +55,41 @@ namespace SaravananPortfolio.Controllers
 
             mail.To.Add(fromEmail);
 
-            using (var smtp = new SmtpClient("smtp.gmail.com", 587))
+            using var smtp = new SmtpClient("smtp.gmail.com", 587)
             {
-                smtp.Credentials = new NetworkCredential(fromEmail, password);
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-            }
+                Credentials = new NetworkCredential(fromEmail, password),
+                EnableSsl = true
+            };
+            smtp.Send(mail);
         }
 
-
-
-        public IActionResult DownloadResume()
-        {
-            var filePath = Path.Combine(
-                Directory.GetCurrentDirectory(),
-                "wwwroot/files/Saravanan_R_Resume.pdf"
-            );
-
-            return PhysicalFile(
-                filePath,
-                "application/pdf",
-                "Saravanan_R_Resume.pdf"
-            );
-        }
         public IActionResult ViewResume()
         {
             var filePath = Path.Combine(
                 Directory.GetCurrentDirectory(),
-                "wwwroot/files/Saravanan_R_Resume.pdf"
+                "wwwroot",
+                "files",
+                "Developer_Resume.pdf"
             );
 
             return PhysicalFile(filePath, "application/pdf");
         }
 
+        public IActionResult DownloadResume()
+        {
+            var filePath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "wwwroot",
+                "files",
+                "Developer_Resume.pdf"
+            );
 
-
+            return PhysicalFile(
+                filePath,
+                "application/pdf",
+                "Developer_Resume.pdf"
+            );
+        }
 
     }
 }

@@ -22,26 +22,33 @@
                 </p>
 
                 <div class="mt-4">
-                    <a asp-action="Projects" class="btn btn-primary btn-lg me-2">
+
+                    <a asp-controller="Home"
+                       asp-action="Projects"
+                       class="btn btn-primary btn-lg me-2">
                         View Projects
                     </a>
 
-                    <a asp-action="Contact" class="btn btn-outline-light btn-lg me-2">
+                    <a asp-controller="Home"
+                       asp-action="Contact"
+                       class="btn btn-outline-light btn-lg me-2">
                         Contact Me
                     </a>
 
-                    <a asp-action="ViewResume"
+                    <a href="/files/Developer_Resume_2026.pdf"
                        target="_blank"
-                       class="btn btn-outline-warning btn-lg me-2">
+                       class="btn btn-outline-warning btn-lg">
                         View Resume
                     </a>
 
-                    <a asp-action="DownloadResume"
+                    <a href="/files/Developer_Resume_2026.pdf"
+                       download
                        class="btn btn-success btn-lg">
                         Download Resume
                     </a>
-                </div>
 
+
+                </div>
 
             </div>
         </div>
